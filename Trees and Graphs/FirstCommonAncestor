@@ -1,0 +1,19 @@
+class FirstCommonAncestor {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root==null){
+            return null;
+        }
+        if(root.val==p.val||root.val==q.val){
+            return root;
+        }
+        
+        TreeNode left_node = lowestCommonAncestor(root.left,p,q);
+        TreeNode right_node = lowestCommonAncestor(root.right,p,q);
+        
+        if(left_node!=null && right_node!=null){
+            return root;
+        }
+        
+        return left_node!=null ? left_node:right_node;
+    }
+}
