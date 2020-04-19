@@ -1,7 +1,15 @@
 package parking_lot;
 
 public class MotorBike extends Vehicle {
-    MotorBike(String licensePlate){
-        super(licensePlate);
+    public MotorBike(){
+        spotsNeeded = 1;
+        vehicleType = VehicleType.MOTORBIKE;
+    }
+    public boolean canFitInSpot(ParkingSpot spot){
+        return true;
+    }
+
+    public void print(){
+        System.out.println("MotorBike");
     }
 }

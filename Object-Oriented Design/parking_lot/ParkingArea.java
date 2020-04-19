@@ -2,22 +2,28 @@ package parking_lot;
 
 public class ParkingArea {
     Level[] levels;
+
     ParkingArea(int maxLevels){
         levels = new Level[maxLevels];
         for(int idx=0;idx<levels.length;idx++){
             levels[idx] = new Level(idx,60);
         }
     }
-    void parkVehicle(Vehicle vehicle){
+    boolean parkVehicle(Vehicle vehicle){
         for(int idx=0;idx<levels.length;idx++){
-            if(levels[idx].isParkingAvailable(vehicle)){
-                levels[idx].parkVehicle();
-                return;
+            if(levels[idx].parkVehicle(vehicle)){
+                return ture;
             }
         }
+        return false;
     }
 
-    void unParkVehicle(Vehicle vehicle){
-        vehicle.unParkVehicle();
+    public void print(){
+        for(int idx=0;idx<levels.length;idx++){
+            System.out.println("level "+idx);
+            levels[idx].print();
+            System.out.println("");
+        }
+        System.out.println("");
     }
 }
